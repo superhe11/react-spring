@@ -1,6 +1,7 @@
 import React from 'react';
 
-const HeaderAdBar = () => {
+
+export const HeaderAdBar = () => {
     return (
         <div className="header__ad-bar">
             <div className="header__ad-bar-wrapper">
@@ -10,7 +11,7 @@ const HeaderAdBar = () => {
                 >
                     SpringOne
                 </a>
-                 2024 will be virtual and free to 
+                2024 will be virtual and free to 
                 <a
                     className="header__ad-bar-link"
                     href="https://go-vmware.broadcom.com/springone2024-reg/?utm_source=spring-io-banner"
@@ -27,5 +28,3 @@ const HeaderAdBar = () => {
         </div>
     );
 };
-
-export default HeaderAdBar;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import FullscreenMenu from './FullscreenMenu';
+import { FullscreenMenu } from './FullscreenMenu';
 
-function BurgerIcon() {
+export const BurgerIcon = () => {
     const [isActive, setIsActive] = useState(false);
 
     const toggleMenu = () => {
@@ -27,6 +27,4 @@ function BurgerIcon() {
             {isActive && <FullscreenMenu />}
         </>
     );
-}
-
-export default BurgerIcon;
+};

@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from '../../Selector/ThemeContext'; // Ensure you import the ThemeContext
+import { ThemeContext } from '../../Selector/ThemeContext'; 
 
-const SearchInput = ({ onSearch }) => {
+const DEBOUNCE_DELAY = 300;
+
+export const SearchInput = ({ onSearch }) => {
     const [searchValue, setSearchValue] = useState('');
     const [debouncedValue, setDebouncedValue] = useState(searchValue);
-    const { theme } = useContext(ThemeContext); // Access the theme from context
+    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedValue(searchValue);
-        }, 300);
+        }, DEBOUNCE_DELAY);
 
         return () => {
             clearTimeout(handler);
@@ -38,5 +40,3 @@ const SearchInput = ({ onSearch }) => {
         </div>
     );
 };
-
-export default SearchInput;

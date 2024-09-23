@@ -1,11 +1,11 @@
 import React from 'react';
 
-function SubMenu({ submenu, isSubmenuActive }) {
+export const SubMenu = ({ submenu, isSubmenuActive }) => {
     return (
         <div className={`submenu ${isSubmenuActive ? '' : 'submenu-hidden'}`}>
-            {submenu.map((sub, index) => (
+            {submenu.map((sub) => (
                 <a
-                    key={`${sub.text}-${index}`}
+                    key={sub.id}
                     href={sub.href}
                     className="submenu-item"
                 >
@@ -14,6 +14,4 @@ function SubMenu({ submenu, isSubmenuActive }) {
             ))}
         </div>
     );
-}
-
-export default SubMenu;
+};

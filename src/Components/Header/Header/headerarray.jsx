@@ -1,6 +1,7 @@
 export const NAV_DATA = [
     {
         text: 'Why Spring',
+        id: '1',
         submenu: [
             { text: 'Overview', href: '#' },
             { text: 'Microservices', href: '#' },
@@ -14,7 +15,7 @@ export const NAV_DATA = [
     },
     {
         text: 'Learn',
-
+        id: '2',
         submenu: [
             { text: 'Overview', href: '#' },
             { text: 'Quickstart', href: '#' },
@@ -24,7 +25,7 @@ export const NAV_DATA = [
     },
     {
         text: 'Projects',
-
+        id: '3',
         submenu: [
             { text: 'Overview', href: '#' },
             { text: 'Spring Boot', href: '#' },
@@ -42,7 +43,7 @@ export const NAV_DATA = [
     },
     {
         text: 'Academy',
-
+        id: '4',
         submenu: [
             { text: 'Courses', href: '#' },
             { text: 'Get Certified', href: '#' }
@@ -50,6 +51,7 @@ export const NAV_DATA = [
     },
     {
         text: 'Solutions',
+        id: '5',
         submenu: [
             { text: 'Overview', href: '#' },
             { text: 'Tanzu Spring', href: '#' },
@@ -60,6 +62,7 @@ export const NAV_DATA = [
     },
     {
         text: 'Community',
+        id: '6',
         submenu: [
             { text: 'Overview', href: '#' },
             { text: 'Events', href: '#' },
