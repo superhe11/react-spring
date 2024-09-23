@@ -7,7 +7,7 @@ import springSecurityLogo from '../../../img/spring-security.svg';
 
 export const CARDS = [
     {
-        outlineClass: 'main__card-outline',
+        id: 1,
         card: {
             cardClass: 'main__card',
             image: {
@@ -23,7 +23,7 @@ export const CARDS = [
         }
     },
     {
-        outlineClass: 'main__card-outline',
+        id: 2,
         card: {
             cardClass: 'main__card',
             image: {
@@ -39,7 +39,7 @@ export const CARDS = [
         }
     },
     {
-        outlineClass: 'main__card-outline',
+        id: 3,
         card: {
             cardClass: 'main__card',
             image: {
@@ -55,7 +55,7 @@ export const CARDS = [
         }
     },
     {
-        outlineClass: 'main__card-outline',
+        id: 4,
         card: {
             cardClass: 'main__card',
             image: {
@@ -71,7 +71,7 @@ export const CARDS = [
         }
     },
     {
-        outlineClass: 'main__card-outline',
+        id: 5,
         card: {
             cardClass: 'main__card',
             image: {
@@ -87,7 +87,7 @@ export const CARDS = [
         }
     },
     {
-        outlineClass: 'main__card-outline',
+        id: 6,
         card: {
             cardClass: 'main__card',
             image: {

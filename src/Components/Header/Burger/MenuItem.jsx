@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DDIconW from '../../../img/DDIconW.svg';
-import SubMenu from './SubMenu';
+import { SubMenu } from './SubMenu';
 
-function MenuItem({ item }) {
+export const MenuItem = ({ item }) => {
     const [isSubmenuActive, setIsSubmenuActive] = useState(false);
 
     const handleItemClick = (e) => {
@@ -28,6 +28,4 @@ function MenuItem({ item }) {
             )}
         </div>
     );
-}
-
-export default MenuItem;
+};

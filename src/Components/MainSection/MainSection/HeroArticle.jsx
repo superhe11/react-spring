@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../Selector/ThemeContext';
 
-const HeroArticle = () => {
+export const HeroArticle = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
@@ -24,5 +24,3 @@ const HeroArticle = () => {
         </article>
     );
 };
-
-export default HeroArticle;

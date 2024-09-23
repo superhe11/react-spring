@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import HeaderAdBar from './Header/HeaderAdBar.jsx';
-import HeaderPlate from './Header/HeaderPlate.jsx';
-import HeaderLogo from './Header/HeaderLogo.jsx';
-import HeaderNav from './Header/HeaderNav.jsx';
-import BurgerIcon from './Burger/BurgerIcon.jsx';
-import ThemeSelector from '../Selector/Selector.jsx';
+import { HeaderAdBar } from './Header/HeaderAdBar';
+import { HeaderPlate } from './Header/HeaderPlate';
+import { HeaderLogo } from './Header/HeaderLogo';
+import { HeaderNav } from './Header/HeaderNav';
+import { BurgerIcon } from './Burger/BurgerIcon';
+import { ThemeSelector } from '../Selector/Selector';
 
-const Header = () => {
+export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -25,5 +25,3 @@ const Header = () => {
         </>
     );
 };
-
-export default Header;

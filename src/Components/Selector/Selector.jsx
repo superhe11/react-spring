@@ -3,7 +3,7 @@ import { ThemeContext } from './ThemeContext';
 import Light from '../../img/Light.svg';
 import Dark from '../../img/Dark.svg';
 
-const ThemeSelector = () => {
+export const ThemeSelector = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     return (
@@ -21,10 +21,8 @@ const ThemeSelector = () => {
                 <img
                     src={Light}
                     alt="Light Theme Icon"
-                    className={`theme-toggler-icon-light
-             ${theme === 'light' ? 'active' : ''}`}
+                    className={`theme-toggler-icon-light ${theme === 'light' ? 'active' : ''}`}
                 />
-
                 <img
                     src={Dark}
                     alt="Dark Theme Icon"
@@ -34,5 +32,3 @@ const ThemeSelector = () => {
         </label>
     );
 };
-
-export default ThemeSelector;

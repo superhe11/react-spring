@@ -1,15 +1,14 @@
 import React from 'react';
 import { NAV_DATA } from './headerarray';
-import NavItem from './NavItem';
+import { NavItem } from './NavItem';
 
-const NavMenu = () => {
+
+export const NavMenu = () => {
     return (
         <ul className="header__nav-list">
-            {NAV_DATA.map((item, index) => (
-                <NavItem key={index} item={item} />
+            {NAV_DATA.map((item) => (
+                <NavItem key={item.id} item={item} />
             ))}
         </ul>
     );
 };
-
-export default NavMenu;

@@ -1,9 +1,9 @@
 import React from 'react';
-import CardSection from './MainSection/CardSection';
-import MainPlate from './MainSection/MainPlate';
-import HeroArticle from './MainSection/HeroArticle';
+import { CardSection } from './MainSection/CardSection';
+import { MainPlate } from './MainSection/MainPlate';
+import { HeroArticle } from './MainSection/HeroArticle';
 
-const MainSection = () => {
+export const MainSection = () => {
     return (
         <MainPlate>
             <HeroArticle />
@@ -11,5 +11,3 @@ const MainSection = () => {
         </MainPlate>
     );
 };
-
-export default MainSection;
