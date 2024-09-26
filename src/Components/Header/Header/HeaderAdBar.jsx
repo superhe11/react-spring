@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const HeaderAdBar = () => {
     return (
         <div className="header__ad-bar">

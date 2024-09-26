@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from '../../Selector/ThemeContext'; 
+import { ThemeContext } from '../../Selector/ThemeContext';
 
 const DEBOUNCE_DELAY = 300;
 
