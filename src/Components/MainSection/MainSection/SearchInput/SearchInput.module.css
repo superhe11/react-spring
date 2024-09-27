@@ -1,0 +1,29 @@
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    background-color: #ebf2f2;
+}
+
+.searchInput {
+    width: 50%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #61b861;
+}
+
+.searchContainer.darkTheme {
+    background-color: #2c2c2c;
+}
+
+.darkTheme .searchInput {
+    background-color: rgb(56, 54, 54);
+}

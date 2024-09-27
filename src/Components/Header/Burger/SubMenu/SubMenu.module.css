@@ -1,0 +1,29 @@
+.submenu {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(50, 50, 50);
+    padding-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.submenu.active {
+    max-height: 500px;
+}
+
+.submenuItem {
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(119, 119, 119);
+}
+
+.submenuItem:hover {
+    color: #6db33f;
+    transition: 0.1s ease;
+}

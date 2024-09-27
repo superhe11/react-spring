@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from './Components/Selector/ThemeContext';
 import {
     BrowserRouter as Router,
@@ -14,6 +15,10 @@ import { LoginPage } from './Components/Auth/LoginPage';
 const PrivateRoute = ({ element }) => {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     return isAuthenticated ? element : <Navigate to="/login" />;
+};
+
+PrivateRoute.propTypes = {
+    element: PropTypes.element.isRequired
 };
 
 export const App = () => {

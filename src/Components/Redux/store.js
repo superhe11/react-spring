@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { cardReducer } from './reducer';
+import { cardsReducer } from './reducer';
 import { authReducer } from './authReducer';
 
 const rootReducer = combineReducers({
-    cards: cardReducer,
+    cards: cardsReducer,
     auth: authReducer
 });
 

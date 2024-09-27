@@ -1,0 +1,68 @@
+.toggler {
+    align-self: center;
+    background: #cdd4d4;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    width: 40px;
+}
+
+.togglerInput {
+    display: none;
+}
+
+.togglerIcon {
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    left: -10px;
+    height: 27px;
+    width: 27px;
+    transition: all 0.5s ease;
+    z-index: 99;
+}
+
+.togglerIconLight {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+}
+
+.togglerIconDark {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+}
+
+.active .togglerIcon {
+    left: 25px;
+    background: #fff;
+}
+
+.active .togglerIconLight {
+    display: none;
+}
+
+.active .togglerIconDark {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .toggler {
+        display: none;
+    }
+}

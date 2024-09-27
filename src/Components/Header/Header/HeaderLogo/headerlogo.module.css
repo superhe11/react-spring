@@ -1,0 +1,33 @@
+.header__logo {
+    width: 350px;
+    height: 46.7px;
+    margin-left: 90px;
+}
+
+@media (max-width: 1250px) {
+    .header__logo {
+        width: 250px;
+    }
+}
+@media (max-width: 1280px) {
+    .header__logo {
+        width: 240px;
+    }
+}
+@media (max-width: 1120px) {
+    .header__logo {
+        width: 230px;
+    }
+}
+@media (max-width: 1068px) {
+    .header__logo {
+        width: 210px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .header__logo {
+        margin-left: 110px;
+    }
+}

@@ -3,21 +3,19 @@ export const FILTER_CARDS = 'FILTER_CARDS';
 
 export const setSearchValue = (value) => ({
     type: SET_SEARCH_VALUE,
+
     payload: value
 });
 
-export const filterCards = () => ({
-    type: FILTER_CARDS
+export const filterCards = (value) => ({
+    type: FILTER_CARDS,
+    payload: value
 });
 
-export const login = () => {
-    return {
-        type: 'LOGIN'
-    };
-};
+export const login = () => ({
+    type: 'LOGIN'
+});
 
-export const logout = () => {
-    return {
-        type: 'LOGOUT'
-    };
-};
+export const logout = () => ({
+    type: 'LOGOUT'
+});
