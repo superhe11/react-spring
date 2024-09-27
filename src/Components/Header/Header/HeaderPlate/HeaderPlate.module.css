@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0 auto;
+    box-shadow: 0 1px rgb(97, 97, 97);
+    flex-direction: row;
+}
+
+.containerSvg {
+    padding: 10px;
+    width: 300px;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .container {
+        justify-content: center;
+    }
+}

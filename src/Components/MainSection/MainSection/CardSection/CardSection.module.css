@@ -1,0 +1,28 @@
+.cardSection {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ebf2f2;
+    justify-content: center;
+    padding-left: 440px;
+    padding-right: 440px;
+    padding-top: 20px;
+}
+
+.cardSection.darkTheme {
+    background-color: #2c2c2c;
+}
+
+@media (max-width: 2140px) {
+    .cardSection {
+        padding-left: 240px;
+        padding-right: 240px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .cardSection {
+        padding-left: 1.6px;
+        padding-right: 1.6px;
+    }
+}

@@ -1,13 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 export const ThemeContext = createContext();
+
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') || 'light'
     );
 
     useEffect(() => {
-        document.body.className =
-            theme === 'dark' ? 'dark-theme' : 'light-theme';
+        const bodyClass = classNames({
+            'dark-theme': theme === 'dark',
+            'light-theme': theme === 'light'
+        });
+        document.body.className = bodyClass;
         localStorage.setItem('theme', theme);
     }, [theme]);
 
@@ -20,4 +27,8 @@ export const ThemeProvider = ({ children }) => {
             {children}
         </ThemeContext.Provider>
     );
+};
+
+ThemeProvider.propTypes = {
+    children: PropTypes.node.isRequired
 };

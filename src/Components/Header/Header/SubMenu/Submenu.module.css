@@ -1,0 +1,61 @@
+.dropdownMenu {
+    background-color: rgb(241, 241, 241);
+    position: absolute;
+    margin-top: 6.4px;
+    padding: 19.2px 40px;
+    display: none; /* Скрыто по умолчанию */
+    border-radius: 6px;
+    box-shadow: 0px 7px 31px -3px rgba(34, 60, 80, 0.21);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.dropdownMenu.active {
+    display: block; /* Показывать, когда активен */
+    animation: dropdownFadeIn 0.3s forwards; /* Анимация появления */
+}
+
+.dropdownMenu.out {
+    animation: dropdownFadeOut 0.3s forwards; /* Анимация исчезновения */
+}
+
+.dropdownMenuElement {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.dropdownMenuLink {
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+    display: block;
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+
+.dropdownMenuLink:visited {
+    color: #000;
+}
+
+.dropdownMenuLink:hover {
+    color: #6db33f; /* Цвет при наведении */
+}
+
+.dropdownMenuLink.last {
+    margin-bottom: 0; /* Убрать нижний отступ у последнего элемента */
+}
+
+.dropdownMenu.dark {
+    background-color: #333; /* Темная тема */
+}
+
+.dropdownMenuLink.dark {
+    color: #fff; /* Цвет для темной темы */
+}
+
+.dropdownMenuLink.dark:hover {
+    color: #6db33f; /* Цвет при наведении в темной теме */
+}

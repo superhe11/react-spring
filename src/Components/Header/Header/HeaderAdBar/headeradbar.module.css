@@ -1,0 +1,21 @@
+.header__ad_bar {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    background-color: #6db33f;
+    line-height: 40px;
+    color: #fff;
+}
+
+.header__ad_bar_link {
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .header__ad_bar {
+        display: none;
+    }
+}
