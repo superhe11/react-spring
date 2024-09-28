@@ -3,7 +3,6 @@ export const FILTER_CARDS = 'FILTER_CARDS';
 
 export const setSearchValue = (value) => ({
     type: SET_SEARCH_VALUE,
-
     payload: value
 });
 
