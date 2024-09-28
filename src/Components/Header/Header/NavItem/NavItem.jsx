@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types'; // Импортируем PropTypes
+import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../Selector/ThemeContext';
 import DDIcon from '../../../../img/DDIcon.svg';
 import DDIconW from '../../../../img/IconWDD.svg';
