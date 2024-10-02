@@ -1,6 +1,6 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCards, setSearchValue } from '../../../Redux/actions';
+import { fetchCards } from '../../../Redux/actions';
 import { SearchInput } from '../SearchInput/SearchInput';
 import { Card } from '../Card/Card';
 import { ThemeContext } from '../../../Selector/ThemeContext';
@@ -9,27 +9,50 @@ import style from './CardSection.module.css';
 
 export function CardSection() {
     const dispatch = useDispatch();
-    const displayedCards = useSelector((state) => state.cards.displayedCards);
+    const { cards, error } = useSelector((state) => state.cards);
     const { theme } = useContext(ThemeContext);
 
-    const handleSearchChange = useCallback(
-        (value) => {
-            dispatch(setSearchValue(value));
-            dispatch(filterCards(value));
-        },
-        [dispatch]
-    );
+    const [searchValue, setSearchValue] = useState('');
+    const [debouncedSearchValue, setDebouncedSearchValue] =
+        useState(searchValue);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedSearchValue(searchValue);
+        }, 300);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [searchValue]);
+
+    useEffect(() => {
+        const loadCards = async () => {
+            setLoading(true);
+            await dispatch(fetchCards(debouncedSearchValue));
+            setLoading(false);
+        };
+        loadCards();
+    }, [dispatch, debouncedSearchValue]);
+
+    const handleSearchChange = (value) => {
+        setSearchValue(value);
+    };
 
     return (
         <div>
-            <SearchInput onSearch={handleSearchChange} />
+            <SearchInput value={searchValue} onSearch={handleSearchChange} />
             <div
                 className={classNames(style.cardSection, {
                     [style.darkTheme]: theme === 'dark'
                 })}
             >
-                {displayedCards.length > 0 ? (
-                    displayedCards.map((cardObj) => (
+                {loading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p>Error: {error}</p>
+                ) : cards.length > 0 ? (
+                    cards.map((cardObj) => (
                         <Card key={cardObj.id} cardObj={cardObj} />
                     ))
                 ) : (
