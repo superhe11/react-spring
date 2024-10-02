@@ -16,6 +16,7 @@ export function CardSection() {
     const [debouncedSearchValue, setDebouncedSearchValue] =
         useState(searchValue);
     const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSearchValue(searchValue);
@@ -39,6 +40,19 @@ export function CardSection() {
         setSearchValue(value);
     };
 
+    let content;
+    if (loading) {
+        content = <p>Loading...</p>;
+    } else if (error) {
+        content = <p>Error: {error}</p>;
+    } else if (cards.length > 0) {
+        content = cards.map((cardObj) => (
+            <Card key={cardObj.id} cardObj={cardObj} />
+        ));
+    } else {
+        content = <p>No results found</p>;
+    }
+
     return (
         <div>
             <SearchInput value={searchValue} onSearch={handleSearchChange} />
@@ -47,17 +61,7 @@ export function CardSection() {
                     [style.darkTheme]: theme === 'dark'
                 })}
             >
-                {loading ? (
-                    <p>Loading...</p>
-                ) : error ? (
-                    <p>Error: {error}</p>
-                ) : cards.length > 0 ? (
-                    cards.map((cardObj) => (
-                        <Card key={cardObj.id} cardObj={cardObj} />
-                    ))
-                ) : (
-                    <p>No results found</p>
-                )}
+                {content}
             </div>
         </div>
     );
