@@ -13,37 +13,21 @@ export function CardSection() {
     const { theme } = useContext(ThemeContext);
 
     const [searchValue, setSearchValue] = useState('');
-    const [debouncedSearchValue, setDebouncedSearchValue] =
-        useState(searchValue);
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedSearchValue(searchValue);
-        }, 300);
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [searchValue]);
 
     useEffect(() => {
         const loadCards = async () => {
-            setLoading(true);
-            await dispatch(fetchCards(debouncedSearchValue));
-            setLoading(false);
+            await dispatch(fetchCards(searchValue));
         };
         loadCards();
-    }, [dispatch, debouncedSearchValue]);
+    }, [dispatch, searchValue]);
 
     const handleSearchChange = (value) => {
         setSearchValue(value);
     };
 
     let content;
-    if (loading) {
-        content = <p>Loading...</p>;
-    } else if (error) {
+
+    if (error) {
         content = <p>Error: {error}</p>;
     } else if (cards.length > 0) {
         content = cards.map((cardObj) => (
