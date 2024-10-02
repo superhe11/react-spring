@@ -13,14 +13,13 @@ export const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginThunk(username, password))
-            .then(() => {
-                navigate('/');
-            })
-            .catch((error) => {
-                console.error('Login error:', error);
-                alert('Invalid username or password');
-            });
+        try {
+            await dispatch(loginThunk(username, password));
+            navigate('/');
+        } catch (error) {
+            console.error('Login error:', error);
+            alert('Invalid username or password');
+        }
     };
 
     return (

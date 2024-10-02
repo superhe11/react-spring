@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../Selector/ThemeContext';
 import classNames from 'classnames';
@@ -6,10 +6,26 @@ import style from './SearchInput.module.css';
 
 export const SearchInput = ({ value, onSearch }) => {
     const { theme } = useContext(ThemeContext);
+    const [localValue, setLocalValue] = useState(value);
+    const [debouncedValue, setDebouncedValue] = useState(localValue);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(localValue);
+        }, 300);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [localValue]);
+
+    useEffect(() => {
+        onSearch(debouncedValue);
+    }, [debouncedValue, onSearch]);
 
     const handleSearchChange = (event) => {
         const newValue = event.target.value;
-        onSearch(newValue);
+        setLocalValue(newValue);
     };
 
     return (
@@ -22,7 +38,7 @@ export const SearchInput = ({ value, onSearch }) => {
                 type="text"
                 className={style.searchInput}
                 placeholder="Поиск..."
-                value={value}
+                value={localValue}
                 onChange={handleSearchChange}
             />
         </div>
