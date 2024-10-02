@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loginThunk } from '../Redux/actions.js';
 import logo from '../../img/LogoSpring.svg';
 import style from './Auth.module.css';
 
@@ -10,17 +11,16 @@ export const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const validUsername = process.env.REACT_APP_USERNAME;
-        const validPassword = process.env.REACT_APP_PASSWORD;
-
-        if (username === validUsername && password === validPassword) {
-            dispatch({ type: 'LOGIN' });
-            navigate('/');
-        } else {
-            alert('Неправильное имя пользователя или пароль');
-        }
+        dispatch(loginThunk(username, password))
+            .then(() => {
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error('Login error:', error);
+                alert('Invalid username or password');
+            });
     };
 
     return (

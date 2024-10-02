@@ -5,9 +5,9 @@ import style from './Card.module.css';
 export const Card = ({ cardObj }) => {
     return (
         <div className={style.MainCardOutline}>
-            <div className={cardObj.card.cardClass}>
+            <div className={style.main__card}>
                 <img
-                    className={cardObj.card.image.imageClass}
+                    className={style.main__card_image}
                     src={cardObj.card.image.src}
                     alt={cardObj.card.image.alt}
                 />

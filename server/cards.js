@@ -1,20 +1,10 @@
-import springBootLogo from '../../../../img/spring-boot.svg';
-import springFrameworkLogo from '../../../../img/spring-framework.svg';
-import springDataLogo from '../../../../img/spring-data.svg';
-import springCloudLogo from '../../../../img/spring-cloud.svg';
-import springDataFlowLogo from '../../../../img/spring-data-flow.svg';
-import springSecurityLogo from '../../../../img/spring-security.svg';
-import style from './cardsarray.module.css';
-
-export const CARDS = [
+export const cards = [
     {
         id: 1,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Boot Logo',
-                src: springBootLogo
+                src: 'http://localhost:5000/img/spring-boot.svg'
             },
             text: {
                 heading: 'Spring Boot',
@@ -26,11 +16,9 @@ export const CARDS = [
     {
         id: 2,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Framework Logo',
-                src: springFrameworkLogo
+                src: 'http://localhost:5000/img/spring-framework.svg'
             },
             text: {
                 heading: 'Spring Framework',
@@ -42,11 +30,9 @@ export const CARDS = [
     {
         id: 3,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Data Logo',
-                src: springDataLogo
+                src: 'http://localhost:5000/img/spring-data.svg'
             },
             text: {
                 heading: 'Spring Data',
@@ -58,11 +44,9 @@ export const CARDS = [
     {
         id: 4,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Cloud Logo',
-                src: springCloudLogo
+                src: 'http://localhost:5000/img/spring-cloud.svg'
             },
             text: {
                 heading: 'Spring Cloud',
@@ -74,11 +58,9 @@ export const CARDS = [
     {
         id: 5,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Cloud Data Flow Logo',
-                src: springDataFlowLogo
+                src: 'http://localhost:5000/img/spring-data-flow.svg'
             },
             text: {
                 heading: 'Spring Cloud Data Flow',
@@ -90,11 +72,9 @@ export const CARDS = [
     {
         id: 6,
         card: {
-            cardClass: style.main__card,
             image: {
-                imageClass: style.main__card_image,
                 alt: 'Spring Security Logo',
-                src: springSecurityLogo
+                src: 'http://localhost:5000/img/spring-security.svg'
             },
             text: {
                 heading: 'Spring Security',
