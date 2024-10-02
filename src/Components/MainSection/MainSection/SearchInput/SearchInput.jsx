@@ -8,11 +8,12 @@ export const SearchInput = ({ value, onSearch }) => {
     const { theme } = useContext(ThemeContext);
     const [localValue, setLocalValue] = useState(value);
     const [debouncedValue, setDebouncedValue] = useState(localValue);
+    const DEBOUNCE_DELAY = 300;
 
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedValue(localValue);
-        }, 300);
+        }, DEBOUNCE_DELAY);
 
         return () => {
             clearTimeout(handler);
@@ -47,5 +48,5 @@ export const SearchInput = ({ value, onSearch }) => {
 
 SearchInput.propTypes = {
     value: PropTypes.string.isRequired,
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
 };
