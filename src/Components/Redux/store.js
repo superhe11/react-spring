@@ -1,11 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk';
+import { thunkMiddleware } from './thunk';
 import { cardsReducer } from './reducer';
 import { authReducer } from './authReducer';
+import { loggerMiddleware } from './logger'; 
 
 const rootReducer = combineReducers({
     cards: cardsReducer,
-    auth: authReducer
+    auth: authReducer,
 });
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(
+    rootReducer,
+    applyMiddleware(thunkMiddleware, loggerMiddleware)
+);

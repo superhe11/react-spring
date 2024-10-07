@@ -15,16 +15,17 @@ describe('Login Thunk', () => {
     it('dispatches LOGIN_SUCCESS when login is successful', async () => {
         fetch.mockResolvedValueOnce({
             status: 200,
-            json: () => Promise.resolve({ message: 'Login successful' })
+            json: () => Promise.resolve({ accessToken: 'someAccessToken', refreshToken: 'someRefreshToken', username: 'validUser' })
         });
-
-        const expectedActions = [{ type: LOGIN_SUCCESS }];
+    
+        const expectedActions = [{ type: LOGIN_SUCCESS, payload: 'validUser' }];
         const store = mockStore({});
-
+    
         await store.dispatch(loginThunk('validUser', 'validPass'));
-
+    
         expect(store.getActions()).toEqual(expectedActions);
     });
+    
 
     it('dispatches LOGIN_FAILURE when login fails', async () => {
         fetch.mockResolvedValueOnce({

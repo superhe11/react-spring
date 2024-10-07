@@ -1,0 +1,46 @@
+.headerControls {
+    display: flex;
+    align-items: center;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.userInfo span {
+    margin-right: 10px;
+}
+
+.logoutButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logoutButton img {
+    width: 24px;
+    height: 24px;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.userInfo span {
+    margin-right: 10px;
+}
+
+.logoutButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logoutButton img {
+    width: 24px;
+    height: 24px;
+}

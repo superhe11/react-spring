@@ -3,22 +3,30 @@ import PropTypes from 'prop-types';
 import style from './Card.module.css';
 
 export const Card = ({ cardObj }) => {
+    const { card } = cardObj || {};
+    const { image, text } = card || {};
+
     return (
         <div className={style.MainCardOutline}>
             <div className={style.main__card}>
-                <img
-                    className={style.main__card_image}
-                    src={cardObj.card.image.src}
-                    alt={cardObj.card.image.alt}
-                />
+                {image ? (
+                    <img
+                        className={style.main__card_image}
+                        src={image.src}
+                        alt={image.alt}
+                    />
+                ) : (
+                    <div>No Image</div>
+                )}
                 <div>
-                    <h3>{cardObj.card.text.heading}</h3>
-                    <p>{cardObj.card.text.description}</p>
+                    <h3>{text?.heading || 'No Heading'}</h3>
+                    <p>{text?.description || 'No Description'}</p>
                 </div>
             </div>
         </div>
     );
 };
+
 
 Card.propTypes = {
     cardObj: PropTypes.shape({

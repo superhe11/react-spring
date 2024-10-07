@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginThunk } from '../Redux/actions.js';
-import logo from '../../img/LogoSpring.svg';
-import style from './Auth.module.css';
+import { loginThunk } from '../../Redux/actions.js';
+import logo from '../../../img/LogoSpring.svg';
+import style from './AuthIn.module.css';
 
 export const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -48,6 +48,9 @@ export const LoginPage = () => {
                 <button type="submit" className={style.form_button_submit}>
                     Login
                 </button>
+                <button onClick={() => navigate('/signup')} className={style.switch_form_button}>
+                Сreate an account
+            </button>
             </form>
         </div>
     );
