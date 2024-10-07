@@ -15,7 +15,6 @@ export const loginFailure = (error) => ({
     payload: error
 });
 
-
 export const loginThunk = (username, password) => {
     return async (dispatch) => {
         try {

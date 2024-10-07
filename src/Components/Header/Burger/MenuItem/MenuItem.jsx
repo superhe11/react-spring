@@ -45,3 +45,9 @@ MenuItem.propTypes = {
         submenu: PropTypes.array
     }).isRequired
 };
+
+MenuItem.defaultProps = {
+    item: {
+        submenu: []
+    }
+};

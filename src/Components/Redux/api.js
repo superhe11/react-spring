@@ -9,7 +9,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     };
     options.headers = {
         ...options.headers,
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`
     };
 
     let response = await fetch(url, options);
@@ -34,12 +34,16 @@ export const fetchWithAuth = async (url, options = {}) => {
             response = await fetch(url, options);
 
             if (response.status === 401 || response.status === 403) {
-                console.log('Retried request failed after token refresh. Redirecting to login.');
+                console.log(
+                    'Retried request failed after token refresh. Redirecting to login.'
+                );
                 redirectToLogin();
                 throw new Error('Session expired. Please log in again.');
             }
         } else {
-            console.log('Refresh token expired or invalid. Redirecting to login.');
+            console.log(
+                'Refresh token expired or invalid. Redirecting to login.'
+            );
             redirectToLogin();
             throw new Error('Session expired. Please log in again.');
         }

@@ -5,8 +5,8 @@ import { HeaderLogo } from './Header/HeaderLogo/HeaderLogo';
 import { NavMenu } from './Header/NavMenu/NavMenu';
 import { BurgerIcon } from './Burger/BurgerIcon/BurgerIcon';
 import { ThemeSelector } from '../Selector/Selector/Selector';
-import { UserGreeting } from './UserGreeting/UserGreeting'; 
-import style from './Header.module.css'; 
+import { UserGreeting } from './UserGreeting/UserGreeting';
+import style from './Header.module.css';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);

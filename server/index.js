@@ -17,19 +17,34 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const userCheck = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+        const userCheck = await pool.query(
+            'SELECT * FROM users WHERE username = $1',
+            [username]
+        );
         if (userCheck.rows.length === 0) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res
+                .status(401)
+                .json({ message: 'Invalid username or password' });
         }
 
         const user = userCheck.rows[0];
 
         if (user.password !== password) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res
+                .status(401)
+                .json({ message: 'Invalid username or password' });
         }
         const userId = user.id;
-        const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1s' });
-        const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '3m' });
+        const accessToken = jwt.sign(
+            { userId },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '1s' }
+        );
+        const refreshToken = jwt.sign(
+            { userId },
+            process.env.REFRESH_TOKEN_SECRET,
+            { expiresIn: '3m' }
+        );
 
         res.status(200).json({ accessToken, refreshToken, username });
     } catch (error) {
@@ -46,7 +61,8 @@ app.get('/api/cards', authenticateToken, async (req, res) => {
         let queryParams = [];
 
         if (search) {
-            queryText += ' WHERE LOWER(heading) LIKE $1 OR LOWER(description) LIKE $1';
+            queryText +=
+                ' WHERE LOWER(heading) LIKE $1 OR LOWER(description) LIKE $1';
             queryParams.push(`%${search.toLowerCase()}%`);
         }
 
@@ -57,13 +73,13 @@ app.get('/api/cards', authenticateToken, async (req, res) => {
             card: {
                 image: {
                     alt: row.image_alt,
-                    src: row.image_src,
+                    src: row.image_src
                 },
                 text: {
                     heading: row.heading,
-                    description: row.description,
-                },
-            },
+                    description: row.description
+                }
+            }
         }));
 
         return res.status(200).json(cards);
@@ -84,21 +100,31 @@ app.post('/refresh', (req, res) => {
             return res.sendStatus(403);
         }
         const userId = user.userId;
-        const newAccessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2s' });
+        const newAccessToken = jwt.sign(
+            { userId },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '2s' }
+        );
         res.json({ accessToken: newAccessToken });
     });
 });
 
 app.post('/signup', async (req, res) => {
-    const { username, password, repeatPassword, firstName, lastName, age } = req.body;
+    const { username, password, repeatPassword, firstName, lastName, age } =
+        req.body;
 
     const errors = {};
 
     if (username.length < 3) {
         errors.username = 'Username must contain 3 symbols or more';
     }
-    if (password.length < 4  || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
-        errors.password = 'Password must contain at least 1 number, 1 letter, and be 4 symbols or more';
+    if (
+        password.length < 4 ||
+        !/\d/.test(password) ||
+        !/[a-zA-Z]/.test(password)
+    ) {
+        errors.password =
+            'Password must contain at least 1 number, 1 letter, and be 4 symbols or more';
     }
     if (password !== repeatPassword) {
         errors.repeatPassword = 'Passwords do not match';
@@ -118,22 +144,35 @@ app.post('/signup', async (req, res) => {
     }
 
     try {
-        const userCheck = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+        const userCheck = await pool.query(
+            'SELECT * FROM users WHERE username = $1',
+            [username]
+        );
         if (userCheck.rows.length > 0) {
-            return res.status(400).json({ errors: { username: 'Username already exists' } });
+            return res
+                .status(400)
+                .json({ errors: { username: 'Username already exists' } });
         }
         const newUser = await pool.query(
             'INSERT INTO users (username, password, first_name, last_name, age) VALUES ($1, $2, $3, $4, $5) RETURNING *',
             [username, password, firstName, lastName, age]
         );
         const userId = newUser.rows[0].id;
-        const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1s' }); 
-        const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '3m' }); 
+        const accessToken = jwt.sign(
+            { userId },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '1s' }
+        );
+        const refreshToken = jwt.sign(
+            { userId },
+            process.env.REFRESH_TOKEN_SECRET,
+            { expiresIn: '3m' }
+        );
         res.status(201).json({
             message: 'User registered successfully',
             user: newUser.rows[0],
             accessToken,
-            refreshToken,
+            refreshToken
         });
     } catch (error) {
         console.error(error);

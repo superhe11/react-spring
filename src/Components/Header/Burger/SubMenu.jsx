@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function SubMenu({ submenu, isSubmenuActive }) {
+export function SubMenu({ submenu, isSubmenuActive }) {
     return (
         <div className={`submenu ${isSubmenuActive ? '' : 'submenu-hidden'}`}>
             {submenu.map((sub, index) => (
@@ -16,4 +17,12 @@ function SubMenu({ submenu, isSubmenuActive }) {
     );
 }
 
-export default SubMenu;
+SubMenu.propTypes = {
+    submenu: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            href: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    isSubmenuActive: PropTypes.bool.isRequired
+};

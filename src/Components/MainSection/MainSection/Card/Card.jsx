@@ -27,7 +27,6 @@ export const Card = ({ cardObj }) => {
     );
 };
 
-
 Card.propTypes = {
     cardObj: PropTypes.shape({
         card: PropTypes.shape({

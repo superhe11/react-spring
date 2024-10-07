@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import DDIconW from '../../../img/DDIconW.svg';
 import SubMenu from './SubMenu';
 
-function MenuItem({ item }) {
+export function MenuItem({ item }) {
     const [isSubmenuActive, setIsSubmenuActive] = useState(false);
 
     const handleItemClick = (e) => {
@@ -30,4 +31,9 @@ function MenuItem({ item }) {
     );
 }
 
-export default MenuItem;
+MenuItem.propTypes = {
+    item: PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        submenu: PropTypes.array
+    }).isRequired
+};

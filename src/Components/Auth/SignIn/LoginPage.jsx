@@ -48,9 +48,12 @@ export const LoginPage = () => {
                 <button type="submit" className={style.form_button_submit}>
                     Login
                 </button>
-                <button onClick={() => navigate('/signup')} className={style.switch_form_button}>
-                Сreate an account
-            </button>
+                <button
+                    onClick={() => navigate('/signup')}
+                    className={style.switch_form_button}
+                >
+                    Сreate an account
+                </button>
             </form>
         </div>
     );

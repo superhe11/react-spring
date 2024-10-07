@@ -13,7 +13,7 @@ export const SignUpPage = () => {
         repeatPassword: '',
         firstName: '',
         lastName: '',
-        age: '',
+        age: ''
     });
 
     const [errors, setErrors] = useState({});
@@ -28,14 +28,14 @@ export const SignUpPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         try {
             const response = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(formData)
             });
-    
+
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('accessToken', data.accessToken);
@@ -51,7 +51,7 @@ export const SignUpPage = () => {
                     alert(data.message || 'Signup failed. Please try again.');
                 }
             }
-        } catch (error) {
+        } catch {
             alert('Signup failed. Please try again.');
         }
     };
@@ -59,35 +59,52 @@ export const SignUpPage = () => {
     const formFields = [
         { name: 'username', type: 'text', placeholder: 'Username' },
         { name: 'password', type: 'password', placeholder: 'Password' },
-        { name: 'repeatPassword', type: 'password', placeholder: 'Repeat Password' },
+        {
+            name: 'repeatPassword',
+            type: 'password',
+            placeholder: 'Repeat Password'
+        },
         { name: 'firstName', type: 'text', placeholder: 'First Name' },
         { name: 'lastName', type: 'text', placeholder: 'Last Name' },
-        { name: 'age', type: 'number', placeholder: 'Age' },
+        { name: 'age', type: 'number', placeholder: 'Age' }
     ];
 
     return (
         <div className={style.form_wrapper}>
-            <img className={style.header__logo} alt="Spring Framework Logo" src={logo} />
+            <img
+                className={style.header__logo}
+                alt="Spring Framework Logo"
+                src={logo}
+            />
             <h1 className={style.form_title}>Create your account</h1>
             <form onSubmit={handleSubmit} className={style.form}>
                 {formFields.map((field) => (
                     <div key={field.name}>
                         <input
-                            className={classNames(style.form_input, { [style.error]: errors[field.name] })}
+                            className={classNames(style.form_input, {
+                                [style.error]: errors[field.name]
+                            })}
                             type={field.type}
                             name={field.name}
                             placeholder={field.placeholder}
                             value={formData[field.name]}
                             onChange={handleChange}
                         />
-                        {errors[field.name] && <span className={style.error_message}>{errors[field.name]}</span>}
+                        {errors[field.name] && (
+                            <span className={style.error_message}>
+                                {errors[field.name]}
+                            </span>
+                        )}
                     </div>
                 ))}
                 <button type="submit" className={style.form_button_submit}>
                     Sign Up
                 </button>
             </form>
-            <button onClick={() => navigate('/login')} className={style.switch_form_button}>
+            <button
+                onClick={() => navigate('/login')}
+                className={style.switch_form_button}
+            >
                 Already have an account?
             </button>
         </div>
