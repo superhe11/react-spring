@@ -1,16 +1,20 @@
 import { LOGIN_SUCCESS, LOGIN_FAILURE } from './actions';
 
 const initialState = {
-    isAuthenticated: false,
-    error: null
+    isAuthenticated: !!localStorage.getItem('accessToken'),
+    error: null,
+    username: localStorage.getItem('username') || ''
 };
-
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
-            return { ...state, isAuthenticated: true, error: null };
+            localStorage.setItem('username', action.payload);
+            return { ...state, isAuthenticated: true, error: null, username: action.payload };
         case LOGIN_FAILURE:
-            return { ...state, isAuthenticated: false, error: action.payload };
+            return { ...state, isAuthenticated: false, error: action.payload, username: '' };
+        case 'LOGOUT':
+            localStorage.removeItem('username');
+            return { ...state, isAuthenticated: false, error: null, username: '' };
         default:
             return state;
     }

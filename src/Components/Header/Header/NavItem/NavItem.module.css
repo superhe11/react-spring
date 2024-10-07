@@ -44,19 +44,19 @@
 
 @media (max-width: 1250px) {
     .navItem {
-        font-size: 15.2px;
+        font-size: 13.2px;
     }
 }
 
 @media (max-width: 1280px) {
     .navItem {
-        font-size: 13.6px;
+        font-size: 11.6px;
     }
 }
 
 @media (max-width: 1120px) {
     .navItem {
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 

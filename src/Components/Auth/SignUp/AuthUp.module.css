@@ -1,38 +1,36 @@
-.form_login_wrapper {
+.form_wrapper {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    align-content: space-around;
+    align-items: center;
+    gap: 20px;
 }
 
-.form_login {
+.form {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    min-width: 350px;
     max-width: 450px;
     gap: 15px;
 }
 
-.form_title {
-    align-self: center;
-}
-
 .header__logo {
+    margin: 25px 0;
     width: 350px;
     height: 46.7px;
-    margin-left: 90px;
+
 }
 
-.form_login_input {
+.form_input {
     font-size: 16px;
-    line-height: 28px;
     padding: 8px 16px;
     width: 100%;
     min-height: 44px;
-    border: unset;
+    border: 1px solid #ccc;
     border-radius: 4px;
     outline-color: rgba(84, 212, 137, 0.5);
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(60, 66, 87, 0.16) 0px 0px 0px 1px;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
 .form_button_submit {
@@ -56,6 +54,23 @@
     transition: 0.3s ease;
 }
 
-.header__logo {
-    margin: 25px 0;
+.switch_form_button {
+    border: none;
+    background: none;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.form_input.error {
+    border-color: red;
+}
+
+.error_message {
+    position: relative;
+    color: red;
+    font-size: 12px;
+    top: -4px;
+    margin-bottom: 5px; 
 }

@@ -10,11 +10,12 @@ import {
 import { Provider, useSelector } from 'react-redux';
 import { Main } from './Components/Main';
 import { store } from './Components/Redux/store';
-import { LoginPage } from './Components/Auth/LoginPage';
+import { LoginPage } from './Components/Auth/SignIn/LoginPage.jsx';
+import { SignUpPage } from './Components/Auth/SignUp/SignUp.jsx'; 
 
 const PrivateRoute = ({ element }) => {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    return isAuthenticated ? element : <Navigate to="/login" />;
+    return isAuthenticated ? element : <Navigate to="/signup" />; 
 };
 
 PrivateRoute.propTypes = {
@@ -27,6 +28,7 @@ export const App = () => {
             <ThemeProvider>
                 <Router>
                     <Routes>
+                        <Route path="/signup" element={<SignUpPage />} />{' '}
                         <Route path="/login" element={<LoginPage />} />
                         <Route
                             path="/"
