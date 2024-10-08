@@ -35,8 +35,8 @@ export const loginThunk = (username, password) => {
                 const { message } = await response.json();
                 dispatch(loginFailure(message));
             }
-        } catch (error) {
-            dispatch(loginFailure('Network error:', error));
+        } catch {
+            dispatch(loginFailure('Network error'));
         }
     };
 };
