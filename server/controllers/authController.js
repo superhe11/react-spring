@@ -86,49 +86,40 @@ router.post('/signup', async (req, res) => {
         return res.status(400).json({ errors });
     }
 
-    try {
-        const userCheck = await pool.query(
-            'SELECT * FROM users WHERE username = $1',
-            [username]
-        );
-        if (userCheck.rows.length > 0) {
-            return res.status(409).json({
-                errors: { username: 'Имя пользователя уже существует' }
-            });
-        }
-
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-        const newUser = await pool.query(
-            'INSERT INTO users (username, password, first_name, last_name, age) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-            [username, hashedPassword, firstName, lastName, age]
-        );
-        const userId = newUser.rows[0].id;
-        const accessToken = jwt.sign(
-            { userId },
-            process.env.ACCESS_TOKEN_SECRET,
-            {
-                expiresIn: '1s'
-            }
-        );
-        const refreshToken = jwt.sign(
-            { userId },
-            process.env.REFRESH_TOKEN_SECRET,
-            {
-                expiresIn: '3m'
-            }
-        );
-        res.status(201).json({
-            message: 'Пользователь успешно зарегистрирован',
-            user: newUser.rows[0],
-            accessToken,
-            refreshToken
+    const userCheck = await pool.query(
+        'SELECT * FROM users WHERE username = $1',
+        [username]
+    );
+    if (userCheck.rows.length > 0) {
+        return res.status(409).json({
+            errors: { username: 'Имя пользователя уже существует' }
         });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
     }
+
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const newUser = await pool.query(
+        'INSERT INTO users (username, password, first_name, last_name, age) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        [username, hashedPassword, firstName, lastName, age]
+    );
+    const userId = newUser.rows[0].id;
+    const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '1s'
+    });
+    const refreshToken = jwt.sign(
+        { userId },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+            expiresIn: '3m'
+        }
+    );
+    res.status(201).json({
+        message: 'Пользователь успешно зарегистрирован',
+        user: newUser.rows[0],
+        accessToken,
+        refreshToken
+    });
 });
 
 router.post('/refresh', (req, res) => {
