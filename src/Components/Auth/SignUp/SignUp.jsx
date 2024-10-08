@@ -56,7 +56,7 @@ export const SignUpPage = () => {
         }
     };
 
-    const formFields = [
+    const FORM_FIELDS = [
         { name: 'username', type: 'text', placeholder: 'Username' },
         { name: 'password', type: 'password', placeholder: 'Password' },
         {
@@ -78,7 +78,7 @@ export const SignUpPage = () => {
             />
             <h1 className={style.form_title}>Create your account</h1>
             <form onSubmit={handleSubmit} className={style.form}>
-                {formFields.map((field) => (
+                {FORM_FIELDS.map((field) => (
                     <div key={field.name}>
                         <input
                             className={classNames(style.form_input, {

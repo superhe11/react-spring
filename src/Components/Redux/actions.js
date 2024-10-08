@@ -14,7 +14,6 @@ export const loginFailure = (error) => ({
     type: LOGIN_FAILURE,
     payload: error
 });
-
 export const loginThunk = (username, password) => {
     return async (dispatch) => {
         try {
@@ -26,18 +25,22 @@ export const loginThunk = (username, password) => {
 
             if (response.status === 200) {
                 const data = await response.json();
+
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
+                localStorage.setItem('username', data.username);
+
                 dispatch(loginSuccess(data.username));
             } else {
                 const { message } = await response.json();
                 dispatch(loginFailure(message));
             }
-        } catch {
-            dispatch(loginFailure('Network error'));
+        } catch (error) {
+            dispatch(loginFailure('Network error:', error));
         }
     };
 };
+
 export const fetchCardsSuccess = (cards) => ({
     type: FETCH_CARDS_SUCCESS,
     payload: cards
@@ -73,6 +76,7 @@ export const logout = () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('username');
+
         dispatch({ type: 'LOGOUT' });
     };
 };
