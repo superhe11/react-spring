@@ -5,10 +5,10 @@ const initialState = {
     error: null,
     username: localStorage.getItem('username') || ''
 };
+
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
-            localStorage.setItem('username', action.payload);
             return {
                 ...state,
                 isAuthenticated: true,
@@ -23,7 +23,6 @@ export const authReducer = (state = initialState, action) => {
                 username: ''
             };
         case 'LOGOUT':
-            localStorage.removeItem('username');
             return {
                 ...state,
                 isAuthenticated: false,
